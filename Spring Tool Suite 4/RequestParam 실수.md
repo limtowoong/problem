@@ -26,3 +26,17 @@ name 값을 안 줬기 떄문에 발생하였다.
 
 http://localhost:8080/hello-mvc?name=Spring
 이렇게 주소 뒤에 Query String을 사용하여 name에 "Spring" 값을 줘서 해결했다.
+
+<br>
+
+# 해결 방법 2
+
+```java
+@GetMapping("hello-mvc")
+public String helloMvc(@RequestParam(name = "name", required = false) String name, Model model) {
+	model.addAttribute("name", name);
+	return "mvc";
+}
+```
+
+required = false를 사용하여 값을 안 줘도 되게 만들 수 있다.
